@@ -245,7 +245,7 @@ if __name__ == "__main__":
     # => args for basic information
     parser.add_argument('--exp_name', default="ebme-baseline", type=str,
             help='experiment name, will be used to save all generated files')
-    parser.add_argument('--train_log_root', default="../embe-train-log", type=str,
+    parser.add_argument('--train_log_root', default="../ebme-train-log", type=str,
             help='root dir to save all training logs')
     parser.add_argument('--resume', default=True, type=bool,
             help='resume from previously saved experiment logs')

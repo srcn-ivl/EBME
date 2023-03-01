@@ -78,8 +78,14 @@ run the following command to train our base version of EBME:
 CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch \
     --nproc_per_node=2 --master_port=10000 -m tools.train \
         --world_size=2 \
-        --data_root /path/to/vimeo_triplet
+        --data_root /path/to/vimeo_triplet \
+        --train_log_root /path/to/train_log \
+        --exp_name ebme-baseline \
+        --batch_size 16 \
+        --nr_data_worker 2
 ```
+Please assign the root dir to save logs. Otherwise, all training logs will be
+saved in `../ebme-train-log` by default.
 
 If you want to train our high-resolution version of EBME, we suggest to use 4
 GPUs for training, and slightly change some hyper-parameters.
@@ -88,6 +94,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python3 -m torch.distributed.launch \
     --nproc_per_node=4 --master_port=10000 -m tools.train \
         --world_size=4 \
         --data_root /path/to/vimeo_triplet \
+        --train_log_root /path/to/train_log \
         --exp_name ebme-high-resolution \
         --high_synthesis True \
         --batch_size 8 \
