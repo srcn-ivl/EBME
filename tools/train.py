@@ -204,17 +204,13 @@ def init_exp_env():
                     print("Exit the program. Please assign another expriment name!")
                     exit()
 
-        this_repo_log_dir = os.path.join(TRAIN_LOG_ROOT, THIS_CODEBASE_NAME)
-        this_repo_log_dir_link = os.path.join(THIS_CODEBASE_DIR, "train-log")
+        train_log_dir_link = os.path.join(THIS_CODEBASE_DIR, "train-log")
         this_exp_model_dir = os.path.join(THIS_EXP_LOG_DIR, "trained-models")
         this_exp_tf_dir = os.path.join(THIS_EXP_LOG_DIR, "tensorboard")
         if not os.path.exists(TRAIN_LOG_ROOT):
             os.makedirs(TRAIN_LOG_ROOT)
-        # link train log dir to current repo dir
-        if not os.path.exists(this_repo_log_dir):
-            os.makedirs(this_repo_log_dir)
-        if not os.path.exists(this_repo_log_dir_link):
-            cmd = "ln -s %s %s" % (this_repo_log_dir, this_repo_log_dir_link)
+        if not os.path.exists(train_log_dir_link):
+            cmd = "ln -s %s %s" % (TRAIN_LOG_ROOT, train_log_dir_link)
             os.system(cmd)
         os.makedirs(THIS_EXP_LOG_DIR)
         os.makedirs(this_exp_model_dir)
@@ -353,8 +349,7 @@ if __name__ == "__main__":
     WORLD_SIZE = args.world_size
     DEVICE = torch.device("cuda", LOCAL_RANK)
     THIS_CODEBASE_DIR = os.path.split(os.path.split(__file__)[0])[0]
-    THIS_CODEBASE_NAME = os.path.split(THIS_CODEBASE_DIR)[1]
-    THIS_EXP_LOG_DIR =os.path.join(TRAIN_LOG_ROOT, THIS_CODEBASE_NAME, EXP_NAME)
+    THIS_EXP_LOG_DIR =os.path.join(TRAIN_LOG_ROOT, EXP_NAME)
 
     optimizer_cfg_dict["ckpt_file"] = os.path.join(THIS_EXP_LOG_DIR, "optimizer-ckpt.pth")
     if not os.path.exists(optimizer_cfg_dict["ckpt_file"]):

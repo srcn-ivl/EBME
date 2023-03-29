@@ -152,8 +152,7 @@ to the license of RIFE and softmax-splatting.
 ```
 @inproceedings{jin2023enhanced,
   title={Enhanced Bi-directional Motion Estimation for Video Frame Interpolation},
-  author={Xin, Jin and Longhai, Wu and Guotao, Shen and Youxin, Chen and Jie,
-  Chen and Jayoon, Koo and Cheul-hee, Hahm},
+  author={Jin, Xin and Wu, Longhai and Shen, Guotao and Chen, Youxin and Chen, Jie and Koo, Jayoon and Hahm, Cheul-hee},
   booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year={2023}
 }
